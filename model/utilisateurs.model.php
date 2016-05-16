@@ -12,15 +12,6 @@ class Utilisateurs
 	private $photo;
 	private $dateNaissance;
 
-	///////////////////////////////////////////////////////
-	///  CONSTRUCTEUR
-	///////////////////////////////////////////////////////
-
-
-		/**
-		 * constructeur
-		 * @param int $idUtilisateur
-		 */
 		function __construct($idUtilisateur)
 		{
 			$dbh = SPDO::getInstance();
@@ -39,96 +30,50 @@ class Utilisateurs
 			$this->dateNaissance = $utilisateur['dateNaissanceUtilisateur'];
 		}
 
-
-	///////////////////////////////////////////////////////
-	///  TOSTRING
-	///////////////////////////////////////////////////////
-		/**
-		 * Renvoie l'identifiant d'un utilisateur
-		 * @return identifiant
-		 */
 		function __toString()
 		{
 			return "".$this->identifiant;
 		}
 
 
-	///////////////////////////////////////////////////////
-	///  GETTERS
-	///////////////////////////////////////////////////////
-
-	    /**
-	     * Renvoie la valeur de idUtilisateur.
-	     * @return idUtilisateur
-	     */
 	    public function getIdUtilisateur()
 	    {
 	        return $this->idUtilisateur;
 	    }
 
-	    /**
-	     * Renvoie la valeur de identifiant.
-	     * @return identifiant
-	     */
 	    public function getIdentifiant()
 	    {
 	        return $this->identifiant;
 	    }
 
-	    /**
-	     * Renvoie la valeur de email.
-	     * @return email
-	     */
+
 	    public function getEmail()
 	    {
 	        return $this->email;
 	    }
 
-	    /**
-	     * Renvoie la valeur de numTel.
-	     * @return numTel
-	     */
 	    public function getNumTel()
 	    {
 	        return $this->numTel;
 	    }
 
-	    /**
-	     * Renvoie la valeur de description.
-	     * @return description
-	     */
 	    public function getDescription()
 	    {
 	        return $this->description;
 	    }
 
-	    /**
-	     * Renvoie la valeur de photo.
-	     * @return photo
-	     */
 	    public function getPhoto()
 	    {
 	        return $this->photo;
 	    }
-	    /**
-	     * Renvoie la valeur de la date de naissance.
-	     * @return dateNaissance
-	     */
+
 	    public function getDateNaissance()
 	    {
 	        return $this->dateNaissance;
 	    }
 
 
-	///////////////////////////////////////////////////////
-	///  SETTERS
-	///////////////////////////////////////////////////////
 
-	    /**
-	     * Change la valeur de identifiant.
-	     * @param string identifiant
-	     * @return utilisateur
-	     */
 	    public function setIdentifiant($identifiant)
 	    {
 	        $this->identifiant = $identifiant;
@@ -145,11 +90,7 @@ class Utilisateurs
 	        return $this;
 	    }
 
-	    /**
-	     * Change la valeur de motDePasse.
-	     * @param string motdepasse
-	     * @return utilisateur
-	     */
+
 	    public function setMotDePasse($motDePasse)
 	    {
 	        $this->motDePasse = sha1($motDePasse.GDS);
@@ -166,11 +107,7 @@ class Utilisateurs
 	        return $this;
 	    }
 
-	    /**
-	     * Change la valeur de email.
-	     * @param string email
-	     * @return utilisateur
-	     */
+
 	    public function setEmail($email)
 	    {
 	        $this->email = $email;
@@ -187,11 +124,6 @@ class Utilisateurs
 	        return $this;
 	    }
 
-	    /**
-	     * Change la valeur de numTel.
-	     * @param string numtel
-	     * @return utilisateur
-	     */
 	    public function setNumTel($numTel=null)
 	    {
 	        $this->numTel = $numTel;
@@ -209,11 +141,6 @@ class Utilisateurs
 	        return $this;
 	    }
 
-	    /**
-	     * Change la valeur de description.
-	     * @param string description
-	     * @return utilisateur
-	     */
 	    public function setDescription($description=null)
 	    {
 	        $this->description = $description;
@@ -230,11 +157,7 @@ class Utilisateurs
 	        return $this;
 	    }
 
-	    /**
-	     * Change la valeur de photo.
-	     * @param string photo
-	     * @return utilisateur
-	     */
+
 	    public function setPhoto($photo)
 	    {
 	        $this->photo = $photo;
@@ -251,11 +174,7 @@ class Utilisateurs
 	        return $this;
 	    }
 
-	    /**
-	     * Change la valeur de la date de naissance.
-	     * @param date dateNaissance
-	     * @return utilisateur
-	     */
+
 	    public function setDateNaissance($dateNaissance=null)
 	    {
 	        $this->dateNaissance = $dateNaissance;
@@ -273,20 +192,6 @@ class Utilisateurs
 	    }
 
 
-	///////////////////////////////////////////////////////
-	///  METHODES
-	///////////////////////////////////////////////////////
-
-	/**
-	 * Créé un utilisateur
-	 * @param string identifiant 
-	 * @param string motDePasse 
-	 * @param string email 
-	 * @param string numTel 
-	 * @param string description 
-	 * @param string photo 
-	 * @return int idUtilisateur
-	 */
 	public static function createUtilisateur($identifiant, $motDePasse, $email, $numTel=null, $description=null, $photo="default.png", $dateNaissance=null)
 	{
 		// Vérification de l'email et du numéro de téléphone et sha1 du motdepasse?
@@ -307,10 +212,7 @@ class Utilisateurs
 		return $dbh->lastInsertId();
 	}
 
-	/**
-	 * suppression d'un compte utilisateur
-	 * @param int idUtilisateur 
-	 */
+
 	public static function supprimerUtilisateur($idUtilisateur)
 	{
 		$dbh = SPDO::getInstance();
@@ -322,12 +224,6 @@ class Utilisateurs
 		$stmt->closeCursor();
 	}
 
-	/**
-	 * Connexion d'un utilisateur
-	 * @param string $identifiant 
-	 * @param string $motDePasse 
-	 * @return int 
-	 */
 	public static function connexion($identifiant, $motDePasse)
 	{	
 		$dbh = SPDO::getInstance();
@@ -352,11 +248,6 @@ class Utilisateurs
 	}
 
 
-	/**
-	 * Renvoie true si l'email est déja utilsé
-	 * @param string email 
-	 * @return bool 
-	 */
 	public static function existeEmail($email)
 	{	
 		$dbh = SPDO::getInstance();
@@ -371,11 +262,7 @@ class Utilisateurs
 		return !empty($number);
 	}
 
-	/**
-	 * Renvoie true si l'identifiant est déja utilsé
-	 * @param string identifiant 
-	 * @return bool 
-	 */
+
 	public static function existeIdentifiant($identifiant)
 	{	
 		$dbh = SPDO::getInstance();
@@ -390,10 +277,7 @@ class Utilisateurs
 		return !empty($number);
 	}
 
-	/**
-	 * Récupère tous les messages d'un utilisateur
-	 * @return array[messages]
-	 */
+
 	public function getAllMessagesFromUser()
 	{
 		$dbh = SPDO::getInstance();
@@ -413,10 +297,6 @@ class Utilisateurs
 		return $messages;
 	}
 
-	/**
-	 * Renvoie tous les messages que l'utlisateur peut voir
-	 * @return array[messages]
-	 */
 	public function getAllMessagesVisibles()
 	{
 		$dbh = SPDO::getInstance();
@@ -437,10 +317,6 @@ class Utilisateurs
 	}
 
 
-	/**
-	 * Renvoie tous les utilisateurs
-	 * @return array[utilisateurs]
-	 */
 	public static function getAllUtilisateurs()
 	{
 		$dbh = SPDO::getInstance();

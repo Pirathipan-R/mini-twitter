@@ -1,10 +1,4 @@
 <?php 
-/**
- * 
- *  ALERTES
- *  Ce fichier gère les différentes alertes possible sur le site, ces alertes sont forcément appelée par un get
- * 
-**/
 if(isset($_REQUEST['alert']) && !empty($_REQUEST['alert']))
 {
 	switch ($_REQUEST['alert']) 
